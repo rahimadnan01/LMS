@@ -10,7 +10,6 @@ function Navbar() {
       <NavLogo></NavLogo>
       <NavList></NavList>
       <Button>Join now</Button>
-      <BlueBtn></BlueBtn>
     </div>
   );
 }

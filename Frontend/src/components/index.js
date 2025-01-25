@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-
+const tl = gsap.timeline();
 // data
 const listItems = ["Home", "Courses", "Dashboard", "About us", "Article"];
 
@@ -20,4 +20,30 @@ export const mouseEnterBtn = (btnRef) => {
   );
 };
 
+export const changeText = (btnRef, setText) => {
+  tl.to(btnRef.current, {
+    opacity: 0,
+    duration: 0.5,
+    ease: "expoScale(0.5,7,none)",
+  })
+    .call(() => setText(`→ Start Learning`))
+    .to(btnRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "expoScale(0.5,7,none)",
+    });
+};
+export const mouseLeave = (btnRef, setText) => {
+  tl.to(btnRef.current, {
+    opacity: 0,
+    duration: 0.5,
+    ease: "expoScale(0.5,7,none)",
+  })
+    .call(() => setText(` Start Learning →`))
+    .to(btnRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "expoScale(0.5,7,none)",
+    });
+};
 export { listItems };
