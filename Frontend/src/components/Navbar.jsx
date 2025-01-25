@@ -2,7 +2,6 @@ import React from "react";
 import NavLogo from "./NavLogo.jsx";
 import NavList from "./NavList.jsx";
 import Button from "./Button.jsx";
-import BlueBtn from "./BlueBtn.jsx";
 
 function Navbar() {
   return (
