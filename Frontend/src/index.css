@@ -1,1 +1,16 @@
 @import "tailwindcss";
+@layer utilities {
+  /* Custom mobile classes */
+  /* For mobile devices */
+  @media (max-width: 640px) {
+    .sm-w {
+      width: 80%;
+    }
+    .sm-mt {
+      margin-top: 3rem;
+    }
+    .sm-text {
+      font-size: 1rem;
+    }
+  }
+}

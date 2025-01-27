@@ -2,7 +2,11 @@ import { gsap } from "gsap";
 const tl = gsap.timeline();
 // data
 const listItems = ["Home", "Courses", "Dashboard", "About us", "Article"];
-
+const num = 5;
+const reviews = [];
+for (let i = 1; i <= num; i++) {
+  reviews.push(i);
+}
 // animations
 export const mouseEnterBtn = (btnRef) => {
   const letters = btnRef.current.querySelectorAll("span");
@@ -46,4 +50,17 @@ export const mouseLeave = (btnRef, setText) => {
       ease: "expoScale(0.5,7,none)",
     });
 };
-export { listItems };
+export const scaleBig = (courseRef) => {
+  gsap.to(courseRef.current, {
+    scale: 1.1,
+    duration: 0.5,
+  });
+};
+export const scaleNormal = (courseRef) => {
+  gsap.to(courseRef.current, {
+    scale: 1,
+    duration: 0.5,
+  });
+};
+
+export { listItems, reviews };

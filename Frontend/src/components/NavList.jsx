@@ -6,9 +6,7 @@ function NavList() {
     <div className="w-[50%]  ">
       <ul className="flex  items-center justify-evenly ">
         {listItems.map((item, index) => (
-          <a key={index} href="" className="cursor-pointer">
-            <ListItem children={item}></ListItem>
-          </a>
+          <ListItem key={index} children={item}></ListItem>
         ))}
       </ul>
     </div>
