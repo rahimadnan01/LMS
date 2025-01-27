@@ -4,7 +4,7 @@ import { reviews, scaleBig, scaleNormal } from "./index.js";
 import ListItem from "./ListItem.jsx";
 import TagButton from "./TagButton.jsx";
 import ListUnderline from "./ListUnderline.jsx";
-function CourseCard({ classes }) {
+function SmallCard({ classes }) {
   const courseRef = useRef(null);
   const handleHover = () => {
     scaleBig(courseRef);
@@ -13,16 +13,16 @@ function CourseCard({ classes }) {
     scaleNormal(courseRef);
   };
   return (
-    <div className="lg:w-[100%] lg:h-[100%]   mb-5 flex items-center justify-center cursor-pointer ">
+    <>
       {/* course card */}
       <div
         ref={courseRef}
         onMouseEnter={handleHover}
         onMouseLeave={handleMouseLeave}
-        className={` ${classes}  md:flex-col md:w-[80%] md:mt-8 sm-flex-col sm-w sm-mt w-[70%] h-[70%] lg:flex-row  mt-8 flex  rounded-md overflow-hidden  shadow-xl  `}
+        className={`sm-w md:w-[80%]  lg:w-[30%] lg:h-[30%] bg-white  mt-8 flex flex-col rounded-md overflow-hidden  shadow-xl  pb-4 ${classes}`}
       >
         {/* left */}
-        <div className="lg:w-1/2 lg:h-full ">
+        <div className="lg:w-full lg:h-1/2 ">
           <img
             className="object-cover object-center"
             src={course_elegant01}
@@ -30,7 +30,7 @@ function CourseCard({ classes }) {
           />
         </div>
         {/* right */}
-        <div className="lg:w-1/2 lg:h-full  ">
+        <div className="lg:w-full lg:h-1/2  ">
           {/* reviews */}
           <div className="lg:w-full lg:h-8  py-2 px-5 flex items-center justify-between">
             <div className="flex">
@@ -52,7 +52,7 @@ function CourseCard({ classes }) {
             </ListItem>
           </div>
           <ListItem
-            classes={" sm-text text-2xl font-bold  mr-[8rem] my-3 ml-5"}
+            classes={" sm-text text-1xl font-bold  mr-[8rem] my-3 ml-5"}
           >
             React Front To Back
           </ListItem>
@@ -90,8 +90,8 @@ function CourseCard({ classes }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default CourseCard;
+export default SmallCard;

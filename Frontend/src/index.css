@@ -1,7 +1,5 @@
 @import "tailwindcss";
 @layer utilities {
-  /* Custom mobile classes */
-  /* For mobile devices */
   @media (max-width: 640px) {
     .sm-w {
       width: 80%;
@@ -11,6 +9,25 @@
     }
     .sm-text {
       font-size: 1rem;
+    }
+    .sm-display-none {
+      display: none;
+    }
+    .sm-logo-nav {
+      width: 10rem;
+      height: 5rem;
+    }
+    .sm-nav-pad {
+      padding: 0 10px;
+    }
+
+    .sm-flex-col {
+      flex-direction: column;
+    }
+    .sm-jus-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

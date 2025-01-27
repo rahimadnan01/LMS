@@ -10,6 +10,7 @@ for (let i = 1; i <= num; i++) {
 // animations
 export const mouseEnterBtn = (btnRef) => {
   const letters = btnRef.current.querySelectorAll("span");
+ 
   gsap.fromTo(
     letters,
     { opacity: 0, scale: 0.5, y: 100 },

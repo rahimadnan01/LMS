@@ -3,7 +3,7 @@ import { listItems } from "./index.js";
 import ListItem from "./ListItem.jsx";
 function NavList() {
   return (
-    <div className="w-[50%]  ">
+    <div className=" sm-display-none w-[50%]  ">
       <ul className="flex  items-center justify-evenly ">
         {listItems.map((item, index) => (
           <ListItem key={index} children={item}></ListItem>
