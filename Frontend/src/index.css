@@ -1,11 +1,27 @@
 @import "tailwindcss";
 @layer utilities {
   @media (max-width: 640px) {
+    .sm-w-70 {
+      width: 70%;
+    }
     .sm-w {
       width: 80%;
     }
+    .sm-w-full {
+      width: 100%;
+    }
+    .sm-gap {
+      gap: 1.5rem;
+    }
+    .sm-gap-2 {
+      gap: 0.7rem;
+    }
     .sm-mt {
       margin-top: 3rem;
+    }
+
+    .sm-mt-1 {
+      margin-top: 2rem;
     }
     .sm-text {
       font-size: 1rem;
@@ -28,6 +44,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .sm-jus-start {
+      justify-content: start;
+    }
+    .sm-items-start {
+      align-items: start;
+    }
+
+    .sm-mt {
+      margin-top: 1.3rem;
+    }
+
+    .sm-ml-4 {
+      margin-left: 5rem;
     }
   }
 }

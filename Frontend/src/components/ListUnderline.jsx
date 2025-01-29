@@ -1,8 +1,8 @@
 import React from "react";
 
-function ListUnderline({ children }) {
+function ListUnderline({ children, classes }) {
   return (
-    <ul className="flex items-center">
+    <ul className={`flex items-center ${classes}`}>
       <li className="group relative text-sm">
         <a
           href="#"

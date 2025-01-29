@@ -10,7 +10,7 @@ for (let i = 1; i <= num; i++) {
 // animations
 export const mouseEnterBtn = (btnRef) => {
   const letters = btnRef.current.querySelectorAll("span");
- 
+
   gsap.fromTo(
     letters,
     { opacity: 0, scale: 0.5, y: 100 },
@@ -28,26 +28,26 @@ export const mouseEnterBtn = (btnRef) => {
 export const changeText = (btnRef, setText) => {
   tl.to(btnRef.current, {
     opacity: 0,
-    duration: 0.5,
+    duration: 0.3,
     ease: "expoScale(0.5,7,none)",
   })
     .call(() => setText(`→ Start Learning`))
     .to(btnRef.current, {
       opacity: 1,
-      duration: 0.5,
+      duration: 0.3,
       ease: "expoScale(0.5,7,none)",
     });
 };
 export const mouseLeave = (btnRef, setText) => {
   tl.to(btnRef.current, {
     opacity: 0,
-    duration: 0.5,
+    duration: 0.3,
     ease: "expoScale(0.5,7,none)",
   })
     .call(() => setText(` Start Learning →`))
     .to(btnRef.current, {
       opacity: 1,
-      duration: 0.5,
+      duration: 0.3,
       ease: "expoScale(0.5,7,none)",
     });
 };
