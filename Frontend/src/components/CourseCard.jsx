@@ -47,7 +47,7 @@ function CourseCard({ classes }) {
               </p>
             </div>
 
-            <ListItem>
+            <ListItem >
               <i className="fa-regular fa-bookmark"></i>
             </ListItem>
           </div>

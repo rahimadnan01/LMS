@@ -1,11 +1,11 @@
 import React from "react";
 
-const AdminPanel = () => {
+const Article = () => {
   return (
     <div className="w-full h-screen bg-red-400 flex justify-center items-center">
-    
+      <p>Article</p>
     </div>
   );
 };
 
-export default AdminPanel;
+export default Article;

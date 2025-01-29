@@ -30,13 +30,13 @@ const Footer = () => {
           <FooterLinks></FooterLinks>
         </div>
       </div>
-      <div className=" sm-mt-1 sm-flex-col w-full h-[10%] pt-3 flex justify-evenly items-center border border-t-1 border-t-[#6b7385]">
+      <div className=" sm-mt-1 sm-flex-col w-full h-[10%] pt-3 flex justify-evenly items-center ">
         <p className="text-[1rem] leading-6 text-[#6b7385] ">
           Copyright © 2025 All Rights Reserved
         </p>
         <div className="sm-gap-2 flex items-center h-full gap-4">
-          {reviews.map((review) => (
-            <ListUnderline>footer Link</ListUnderline>
+          {reviews.map((review, index) => (
+            <ListUnderline key={index}>footer Link</ListUnderline>
           ))}
         </div>
       </div>
