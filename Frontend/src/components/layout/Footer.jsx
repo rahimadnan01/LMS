@@ -1,9 +1,9 @@
 import React from "react";
-import FooterLinks from "./FooterLinks";
-import BlueBtn from "./BlueBtn.jsx";
-import { Logo } from "../assets";
-import ListUnderline from "./ListUnderline.jsx";
-import { reviews } from "./index.js";
+import FooterLinks from "../navigation/FooterLinks.jsx";
+import BlueBtn from "../ui/BlueBtn.jsx";
+import { Logo } from "../../assets/index.js";
+import ListUnderline from "../navigation/ListUnderline.jsx";
+import { reviews } from "../index.js";
 const Footer = () => {
   return (
     <>
@@ -21,13 +21,13 @@ const Footer = () => {
               classes={
                 " text-white bg-gradient-to-r from-[#2f57ef] to-[#b966e7] rounded-sm cursor-pointer hover:bg-gradient-to-r hover:from-[#b966e7] hover:to-[#2f57ef] transition duration-700 ease-in"
               }
-            ></BlueBtn>
+            />
           </div>
         </div>
         <div className="sm-w-full  flex justify-evenly w-1/2 h-full items-center">
-          <FooterLinks></FooterLinks>
-          <FooterLinks></FooterLinks>
-          <FooterLinks></FooterLinks>
+          <FooterLinks />
+          <FooterLinks />
+          <FooterLinks />
         </div>
       </div>
       <div className=" sm-mt-1 sm-flex-col w-full h-[10%] pt-3 flex justify-evenly items-center ">

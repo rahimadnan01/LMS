@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { changeText, mouseLeave } from "./index.js";
+import { changeText, mouseLeave } from "../index.js";
 
 function BlueBtn({ classes }) {
   const btnRef = useRef(null);

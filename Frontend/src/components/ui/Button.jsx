@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef } from "react";
-import { mouseEnterBtn } from "./index.js";
+import { mouseEnterBtn } from "../index.js";
 function Button({ children, classes }) {
   const boxRef = useRef(null);
   const handleHover = () => {

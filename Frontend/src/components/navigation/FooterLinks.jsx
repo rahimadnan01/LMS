@@ -1,5 +1,5 @@
 import React from "react";
-import { reviews } from "./index.js";
+import { reviews } from "../index.js";
 import ListUnderline from "./ListUnderline.jsx";
 const FooterLinks = () => {
   return (
