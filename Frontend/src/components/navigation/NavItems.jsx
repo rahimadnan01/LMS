@@ -1,5 +1,6 @@
-import React, { Children } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
+
 function NavItems({ children, classes }) {
   const navLinks = [
     { name: "Home", path: "/" },
@@ -11,12 +12,17 @@ function NavItems({ children, classes }) {
   return (
     <div className="inline-block">
       <ul className={`flex  items-mr-2 center justify-evenly gap-5`}>
-        {navLinks.map((link) => (
+        {navLinks.map((link, index) => (
           <li
-            key={link.path}
+            key={index}
             className={` ${classes} text-[#192334] hover:text-[#0d6efd] transition duration-400 `}
           >
-            <Link to={link.path}>{link.name}</Link>
+            <NavLink
+              to={link.path}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              {link.name}
+            </NavLink>
           </li>
         ))}
       </ul>

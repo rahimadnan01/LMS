@@ -7,7 +7,7 @@ import { reviews } from "../index.js";
 const Footer = () => {
   return (
     <>
-      <div className="sm-flex-col sm-items-center w-full h-50% flex gap-10 mt-[5rem] justify-evenly items-center  border-t-1 border-t-[#6b7385]  ">
+      <div className="sm-flex-col sm-items-center w-full  flex gap-10 mt-[5rem] justify-evenly items-center  border-t-1 border-t-[#6b7385] bg-[#fff] ">
         <div className="sm-w-full sm-gap md:w-[50%]   h-full lg:w-[30%]  flex flex-col justify-start gap-4 px-8 mt-10">
           <div className=" h-10 w-30 ml-2 ">
             <img className="object-contain w-full h-full" src={Logo} alt="" />

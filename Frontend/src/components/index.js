@@ -1,12 +1,27 @@
 import { gsap } from "gsap";
 const tl = gsap.timeline();
-// data
+//Dummy data
 const listItems = ["Home", "Courses", "Dashboard", "About us", "Article"];
 const num = 5;
 const reviews = [];
 for (let i = 1; i <= num; i++) {
   reviews.push(i);
 }
+
+const profileData = [
+  { headline: "Registration Date", details: "February 25, 2025 6:01 am" },
+  { headline: "First Name", details: "John" },
+  { headline: "Last Name", details: "Doe" },
+  { headline: "Username", details: "instructor" },
+  { headline: "Email", details: "example@gmail.com" },
+  { headline: "Phone Number", details: "+1-202-555-0174" },
+  { headline: "Skill/Occupation", details: "Application Developer" },
+  {
+    headline: "Biography",
+    details:
+      "I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences.",
+  },
+];
 // animations
 export const mouseEnterBtn = (btnRef) => {
   const letters = btnRef.current.querySelectorAll("span");
@@ -64,4 +79,4 @@ export const scaleNormal = (courseRef) => {
   });
 };
 
-export { listItems, reviews };
+export { listItems, reviews, profileData };

@@ -14,6 +14,8 @@ function Home() {
       <CourseCard />
       <div className="sm-flex-col sm-jus-center md:flex-col md:flex md:items-center md:justify-center  lg:flex-row lg:justify-evenly lg:flex-wrap ">
         <SmallCard />
+        <SmallCard />
+        <SmallCard />
       </div>
       <Footer />
     </div>
