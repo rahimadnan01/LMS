@@ -2,7 +2,7 @@ import React from "react";
 import { profileData } from "../index.js";
 const Profile = () => {
   return (
-    <div className=" sm-flex-col w-[65%] h-[100%]  ml-10  overflow-y-auto hide-scrollbar  items-center justify-center shadow-2xl">
+    <div className=" sm-flex-col sm-ml-0 md:h-[80%] md:w-[65%] sm-w lg:w-[65%] lg:h-[100%]  ml-10  overflow-y-auto hide-scrollbar  items-center justify-center shadow-2xl">
       <div className=" w-full h-[15%] flex items-center pl-8 pt-5  ">
         <h1 className="text-1xl font-bold">My Profile</h1>
       </div>

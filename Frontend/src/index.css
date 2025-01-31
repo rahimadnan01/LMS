@@ -10,7 +10,9 @@
     .sm-w-full {
       width: 100%;
     }
-
+    .sm-h-full {
+      height: 40%;
+    }
     .sm-h-1 {
       height: 40vh;
     }

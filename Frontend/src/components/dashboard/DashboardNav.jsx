@@ -14,7 +14,7 @@ const DashboardNav = ({ name }) => {
     { name: "Logout", path: "adminLogout" },
   ];
   return (
-    <div className=" sm-w sm-h-2 sm-ml-0 w-[25%] h-[80%]  ml-8   shadow-2xl ">
+    <div className=" sm-w sm-h-2 sm-ml-0 md:h-[60%] lg:w-[25%] lg:h-[80%]  ml-8   shadow-2xl ">
       <div className="w-[100%] min-h-full bg-[#fff] border-4 border-[#cfa2e8]  rounded-md px-5 py-5">
         <p className="text-[12px] text-[#6b7385] font-semibold ">
           Welcome to {name}
