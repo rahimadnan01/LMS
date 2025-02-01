@@ -1,6 +1,7 @@
 import express from "express";
-import path from "path";
+import cookieParser from "cookie-parser";
 import cors from "cors";
+import { errorHandler } from "./middlewares/errorHandler.middleware.js";
 const app = express();
 
 app.use(
@@ -11,5 +12,14 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.set(express.static("public"));
 export { app };
+app.all("*", (req, res, next) => {
+  next({ status: 500, message: "Something went Wrong" });
+});
+
+// import routes
+
+// declaring routes
+app.use(errorHandler);
