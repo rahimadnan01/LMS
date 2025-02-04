@@ -1,9 +1,9 @@
-import { JsonWebTokenError } from "jsonwebtoken";
+
 import { ApiError } from "../utils/ApiError.js";
 import { wrapAsync } from "../utils/wrapAsync.js";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
-const verifyJwt = wrapAsync(async (req, res, next) => {
+export const verifyJwt = wrapAsync(async (req, res, next) => {
   try {
     const token =
       req.cookies?.accessToken ||

@@ -18,13 +18,12 @@ const userSchema = new mongoose.Schema(
     },
 
     role: {
+      enum: ["admin", "student", "teacher"],
       type: String,
-      enum: ["admin,student,teacher"],
       required: true,
     },
     refreshToken: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
@@ -37,18 +36,18 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
-  await bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
-      username: this.username,
+      email: this.email,
       _id: this._id,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: ACCESS_TOKEN_EXPIRY,
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
     }
   );
 };
@@ -56,7 +55,7 @@ userSchema.methods.generateAccessToken = function () {
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
-      username: this.username,
+      email: this.email,
       _id: this._id,
     },
     process.env.REFRESH_TOKEN_SECRET,

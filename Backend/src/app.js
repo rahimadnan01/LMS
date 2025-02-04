@@ -15,11 +15,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.set(express.static("public"));
 export { app };
-app.all("*", (req, res, next) => {
-  next({ status: 500, message: "Something went Wrong" });
-});
 
 // import routes
-
+import authRoute from "./routes/auth.routes.js";
 // declaring routes
+app.use("/api/v1", authRoute);
+app.all("*", (req, res, next) => {
+  next({ status: 500, message: "Page not found" });
+});
+
 app.use(errorHandler);
