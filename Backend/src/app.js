@@ -18,8 +18,10 @@ export { app };
 
 // import routes
 import authRoute from "./routes/auth.routes.js";
+import userRoute from "./routes/user.routes.js";
 // declaring routes
 app.use("/api/v1", authRoute);
+app.use("/api/v1", userRoute);
 app.all("*", (req, res, next) => {
   next({ status: 500, message: "Page not found" });
 });

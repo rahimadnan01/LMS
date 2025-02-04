@@ -2,8 +2,9 @@ import { ApiError } from "../utils/ApiError";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { wrapAsync } from "../utils/wrapAsync.js";
 import { User } from "../models/user.model.js";
+import { Student } from "../models/student.model.js";
 // create user
-const createUser = wrapAsync(async () => {
+const createUser = wrapAsync(async (req, res) => {
   let { username, email, password, role } = req.body;
   if ([username, email, password, role].some((field) => field.trim()) === "") {
     throw new ApiError(400, "All fields are required");
@@ -37,7 +38,7 @@ const createUser = wrapAsync(async () => {
 });
 
 // updateUser
-const updateUser = wrapAsync(async () => {
+const updateUser = wrapAsync(async (req, res) => {
   let { id } = req.params;
   let { username, email, password, role } = req.body;
   if (!id) {
@@ -96,3 +97,38 @@ const updateUser = wrapAsync(async () => {
     .status(200)
     .json(new ApiResponse(200, updatedUser, "User updated successfully"));
 });
+
+// deleteUser
+const deleteUser = wrapAsync(async (req, res) => {
+  let { id } = req.params;
+  let user = await User.findById(id);
+  if (!user) {
+    throw new ApiError(500, "User not found while deleting");
+  }
+
+  if (!id) {
+    throw new ApiError(500, "failed to fetch userId while deleting the user");
+  }
+
+  let deletedUser = await User.findByIdAndDelete(id);
+
+  if (!deletedUser) {
+    throw new ApiError(500, "Something went wrong while deleting the user");
+  }
+
+  if (user.role === "student") {
+    let deletedStudent = await Student.findOneAndDelete({ user: id });
+    if (!deletedStudent) {
+      throw new ApiError(
+        500,
+        "Something went wrong while deleting the student"
+      );
+    }
+  }
+
+  res
+    .status(200)
+    .json(new ApiResponse(200, deletedUser, "User deleted successfully"));
+});
+
+export { createUser, deleteUser, updateUser };
