@@ -1,8 +1,8 @@
-import { ApiError } from "../utils/ApiError";
+import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { wrapAsync } from "../utils/wrapAsync.js";
 import { User } from "../models/user.model.js";
-import { Student } from "../models/student.model.js";
+import { Student } from "../models/Student.model.js";
 // create user
 const createUser = wrapAsync(async (req, res) => {
   let { username, email, password, role } = req.body;
@@ -32,9 +32,21 @@ const createUser = wrapAsync(async (req, res) => {
     throw new ApiError(500, "Something went wrong while creating a User");
   }
 
+  let student;
+  if (createdUser.role === "student") {
+    student = await Student.create({
+      user: createdUser._id,
+    });
+  }
   res
     .status(200)
-    .json(new ApiResponse(200, createdUser, "User created successfully"));
+    .json(
+      new ApiResponse(
+        200,
+        { createdUser, student },
+        "User created successfully"
+      )
+    );
 });
 
 // updateUser
@@ -60,7 +72,7 @@ const updateUser = wrapAsync(async (req, res) => {
   if (username && typeof username !== "string") {
     throw new ApiError(400, "username must be string");
   }
-  if (password && typeof username !== "string") {
+  if (password && typeof password !== "string") {
     throw new ApiError(400, "username must be string");
   }
   if (role && typeof role !== "string") {
