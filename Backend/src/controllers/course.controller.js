@@ -1,4 +1,5 @@
 import { Course } from "../models/course.model.js";
+import { CourseContent } from "../models/courseContent.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { wrapAsync } from "../utils/wrapAsync.js";
@@ -97,9 +98,20 @@ const deleteCourse = wrapAsync(async (req, res) => {
   if (!deletedCourse) {
     throw new ApiError(500, "Something went wrong while deleting the course");
   }
+  let deletedCourseContent = await CourseContent.findOneAndDelete({
+    course: id,
+  });
+
   res
     .status(200)
-    .json(new ApiResponse(200, deletedCourse, "Course deleted successfully"));
+    .json(
+      new ApiResponse(
+        200,
+        deletedCourse,
+        deletedCourseContent,
+        "Course deleted successfully"
+      )
+    );
 });
 
 const showCourses = wrapAsync(async (req, res) => {
