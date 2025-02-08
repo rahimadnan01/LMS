@@ -143,4 +143,14 @@ const deleteUser = wrapAsync(async (req, res) => {
     .json(new ApiResponse(200, deletedUser, "User deleted successfully"));
 });
 
-export { createUser, deleteUser, updateUser };
+const showUsers = wrapAsync(async (req, res) => {
+  const users = await User.find({});
+  if (!users) {
+    throw new ApiError(500, "Something went wrong wile showing the users");
+  }
+  res
+    .status(200)
+    .json(new ApiResponse(200, users, "Users fetched successfully"));
+});
+
+export { createUser, deleteUser, updateUser, showUsers };

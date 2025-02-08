@@ -18,6 +18,9 @@ const courseSchema = new mongoose.Schema(
       type: String,
       required: String,
     },
+    certificate: {
+      type: String,
+    },
 
     creator: {
       type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +29,6 @@ const courseSchema = new mongoose.Schema(
     courseContent: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "CourseContent",
-      required: true,
     },
   },
   { timestamps: true }

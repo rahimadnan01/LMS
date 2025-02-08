@@ -16,10 +16,6 @@ const moduleSchema = new mongoose.Schema(
         ref: "Lecture",
       },
     ],
-    length: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );
