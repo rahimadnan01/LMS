@@ -47,7 +47,7 @@ const createLecture = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   if (!updatedModule) {
@@ -96,7 +96,7 @@ const updateLecture = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   if (!updatedLecture) {
@@ -128,7 +128,7 @@ const deleteLecture = wrapAsync(async (req, res) => {
     { $pull: { lectures: ObjectId } },
     {
       new: true,
-    }
+    },
   );
 
   if (!updatedModule) {

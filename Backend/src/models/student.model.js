@@ -20,7 +20,7 @@ const studentSchema = new mongoose.Schema(
       type: Number,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export const Student =  mongoose.model("Student", studentSchema);
+export const Student = mongoose.model("Student", studentSchema);

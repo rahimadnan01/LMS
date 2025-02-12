@@ -44,8 +44,8 @@ const createUser = wrapAsync(async (req, res) => {
       new ApiResponse(
         200,
         { createdUser, student },
-        "User created successfully"
-      )
+        "User created successfully",
+      ),
     );
 });
 
@@ -62,7 +62,7 @@ const updateUser = wrapAsync(async (req, res) => {
   if (!existedUser) {
     throw new ApiError(
       400,
-      "Something went wrong while accessing to existedUser"
+      "Something went wrong while accessing to existedUser",
     );
   }
 
@@ -133,7 +133,7 @@ const deleteUser = wrapAsync(async (req, res) => {
     if (!deletedStudent) {
       throw new ApiError(
         500,
-        "Something went wrong while deleting the student"
+        "Something went wrong while deleting the student",
       );
     }
   }

@@ -23,7 +23,7 @@ const generateAccessAndRefreshToken = async (userId) => {
     if (err) {
       throw new ApiError(
         500,
-        "Something went wrong while generating an access and refresh Tokens"
+        "Something went wrong while generating an access and refresh Tokens",
       );
     }
   }
@@ -52,7 +52,7 @@ const registerUser = wrapAsync(async (req, res) => {
   });
 
   let createdUser = await User.findById(user._id).select(
-    "-password -refreshToken"
+    "-password -refreshToken",
   );
 
   if (createdUser.role === "student") {
@@ -66,7 +66,7 @@ const registerUser = wrapAsync(async (req, res) => {
     } catch (error) {
       throw new ApiError(
         500,
-        "something went wrong while creating a new Student"
+        "something went wrong while creating a new Student",
       );
     }
   }
@@ -106,7 +106,7 @@ const LoginUser = wrapAsync(async (req, res) => {
   let { accessToken, refreshToken } = tokens;
 
   let loggedInUser = await User.findById(user._id).select(
-    "-password -refreshToken"
+    "-password -refreshToken",
   );
   if (!loggedInUser) {
     throw new ApiError(500, "Failed to login");
@@ -127,8 +127,8 @@ const LoginUser = wrapAsync(async (req, res) => {
         loggedInUser,
         accessToken,
         refreshToken,
-        "User loggedIn successfully"
-      )
+        "User loggedIn successfully",
+      ),
     );
 });
 
@@ -143,7 +143,7 @@ const logoutUser = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   let options = {
@@ -171,7 +171,7 @@ const refreshAccessToken = wrapAsync(async (req, res) => {
   try {
     verifyRefreshToken = jwt.verify(
       incomingRefreshToken,
-      process.env.REFRESH_TOKEN_SECRET
+      process.env.REFRESH_TOKEN_SECRET,
     );
 
     console.log("verifiedToken", verifyRefreshToken);
@@ -195,7 +195,7 @@ const refreshAccessToken = wrapAsync(async (req, res) => {
   if (!accessToken || !newRefreshToken) {
     throw new ApiError(
       500,
-      "Something went wrong while refreshing access token"
+      "Something went wrong while refreshing access token",
     );
   }
 
@@ -215,8 +215,8 @@ const refreshAccessToken = wrapAsync(async (req, res) => {
           accessToken,
           refreshToken: newRefreshToken,
         },
-        "refresh Access token successfully"
-      )
+        "refresh Access token successfully",
+      ),
     );
 });
 

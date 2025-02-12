@@ -19,7 +19,7 @@ const createCourseContent = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
   let courseContentId = courseContent._id;
   if (!courseContent) {
@@ -39,8 +39,8 @@ const createCourseContent = wrapAsync(async (req, res) => {
         200,
         courseContent,
         updatedCourse,
-        "course content created successfully"
-      )
+        "course content created successfully",
+      ),
     );
 });
 

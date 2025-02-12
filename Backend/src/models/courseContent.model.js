@@ -13,7 +13,7 @@ const courseContentSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const CourseContent = mongoose.model("CourseContent", courseContentSchema);

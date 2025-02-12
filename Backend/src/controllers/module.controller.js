@@ -35,13 +35,13 @@ const createModule = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   if (!updatedCourseContent) {
     throw new ApiError(
       500,
-      "Something went wrong while updating the courseContent"
+      "Something went wrong while updating the courseContent",
     );
   }
   let course = await Course.findById(courseId);
@@ -73,7 +73,7 @@ const updateModule = wrapAsync(async (req, res) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   if (!updatedModule) {
@@ -103,13 +103,13 @@ const deleteModule = wrapAsync(async (req, res) => {
   let updatedCourseContent = await CourseContent.findOneAndUpdate(
     { _id: courseContentId },
     { $pull: { modules: objectIdModuleId } },
-    { new: true }
+    { new: true },
   );
 
   if (!updatedCourseContent) {
     throw new ApiError(
       500,
-      "Something went wrong while updating the course Content"
+      "Something went wrong while updating the course Content",
     );
   }
 

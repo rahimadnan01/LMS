@@ -1,27 +1,27 @@
 import mongoose from "mongoose";
-
-const lectureSchema = new mongoose.Schema(
+const audioSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    duration: {
+    audioUrl: {
       type: String,
       required: true,
     },
-    video: {
+    speaker: {
       type: String,
       required: true,
     },
-
-    module: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Module",
+    details: {
+      type: String,
+      maxLength: 100,
+      required: true,
     },
   },
   { timestamps: true },
 );
 
-const Lecture = mongoose.model("Lecture", lectureSchema);
-export { Lecture };
+const Audio = mongoose.model("Audio", audioSchema);
+
+export { Audio };

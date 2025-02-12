@@ -9,7 +9,7 @@ const router = Router();
 
 router
   .route(
-    "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture"
+    "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture",
   )
   .post(
     upload.fields([
@@ -18,12 +18,12 @@ router
         maxCount: 1,
       },
     ]),
-    createLecture
+    createLecture,
   );
 
 router
   .route(
-    "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture/:lectureId"
+    "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture/:lectureId",
   )
   .put(
     upload.fields([
@@ -32,7 +32,7 @@ router
         maxCount: 1,
       },
     ]),
-    updateLecture
+    updateLecture,
   )
   .delete(deleteLecture);
 export default router;

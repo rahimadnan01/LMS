@@ -9,7 +9,7 @@ cloudinary.config({
 });
 
 // Upload an image
-const uploadOnCloudinary = async (localFilePath) => {
+const uploadPdfOnCloudinary = async (localFilePath) => {
   try {
     if (!localFilePath) {
       return null;
@@ -19,7 +19,7 @@ const uploadOnCloudinary = async (localFilePath) => {
       return null;
     }
     let response = await cloudinary.uploader.upload(localFilePath, {
-      resource_type: "auto",
+      resource_type: "raw",
     });
     fs.unlinkSync(localFilePath);
     return response;
@@ -30,4 +30,4 @@ const uploadOnCloudinary = async (localFilePath) => {
   }
 };
 
-export { uploadOnCloudinary };
+export { uploadPdfOnCloudinary };

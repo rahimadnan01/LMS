@@ -109,8 +109,8 @@ const deleteCourse = wrapAsync(async (req, res) => {
         200,
         deletedCourse,
         deletedCourseContent,
-        "Course deleted successfully"
-      )
+        "Course deleted successfully",
+      ),
     );
 });
 

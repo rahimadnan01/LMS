@@ -23,7 +23,7 @@ router
       },
     ]),
     verifyJwt,
-    createCourse
+    createCourse,
   )
   .get(showCourses);
 
@@ -38,7 +38,7 @@ router.route("/courses/:id").put(
       maxCount: 1,
     },
   ]),
-  updateCourse
+  updateCourse,
 );
 
 router.route("/courses/:id").delete(deleteCourse);
