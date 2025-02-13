@@ -3,7 +3,7 @@ import { upload } from "../middlewares/multer.middleware.js"
 import { addAudio, deleteAudio, updateAudio } from "../controllers/audio.controller.js"
 const router = Router()
 
-router.route("/audios").post(upload.fields([
+router.route("/playlist/:playlistId/audios").post(upload.fields([
     {
         name: "audioUrl",
         maxCount: 1

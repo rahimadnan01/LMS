@@ -6,9 +6,16 @@ import { Audio } from "../models/audio.model.js";
 
 const addAudio = wrapAsync(async (req, res) => {
     const { name, speaker, details } = req.body
+    let { playlistId } = req.params
     if (!name || !speaker || !details) {
         throw new ApiError(400, "All field are required")
     }
+
+    if (!playlistId) {
+        throw new ApiError(400, "Playlist Id is not given")
+    }
+
+
 
     let existedAudio = await Audio.findOne({ name })
     if (existedAudio) {
@@ -33,7 +40,8 @@ const addAudio = wrapAsync(async (req, res) => {
         name: name,
         speaker: speaker,
         details: details,
-        audioUrl: audioUrl.url
+        audioUrl: audioUrl.url,
+        playlist: playlistId
     })
 
     if (!audio) {

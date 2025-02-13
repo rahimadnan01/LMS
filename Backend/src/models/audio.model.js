@@ -18,6 +18,10 @@ const audioSchema = new mongoose.Schema(
       maxLength: 100,
       required: true,
     },
+    playlist: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"Playlist"
+    }
   },
   { timestamps: true },
 );
