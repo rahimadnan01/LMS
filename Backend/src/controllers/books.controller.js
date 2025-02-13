@@ -9,6 +9,11 @@ const createPdf = wrapAsync(async (req, res) => {
   if (!name || !author || !details) {
     throw new ApiError(400, "All fields are required");
   }
+
+  let existedBook = await Book.findOne({ name: name })
+  if (existedBook) {
+    throw new ApiError(400, "Book already exists by this name")
+  }
   let pdfPath = req.files?.bookUrl?.[0].path;
   if (!pdfPath) {
     throw new ApiError(400, "Pdf file is required");
