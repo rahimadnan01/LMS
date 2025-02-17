@@ -4,6 +4,7 @@ import {
   createCourse,
   deleteCourse,
   showCourses,
+  showSingleCourse,
   updateCourse,
 } from "../controllers/course.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
@@ -41,5 +42,5 @@ router.route("/courses/:id").put(
   updateCourse,
 );
 
-router.route("/courses/:id").delete(deleteCourse);
+router.route("/courses/:id").delete(deleteCourse).get(showSingleCourse);
 export default router;

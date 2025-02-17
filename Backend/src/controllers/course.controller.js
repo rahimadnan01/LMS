@@ -123,4 +123,37 @@ const showCourses = wrapAsync(async (req, res) => {
   res.status(200).json(200, courses, "Courses fetched successfully");
 });
 
-export { createCourse, updateCourse, deleteCourse, showCourses };
+const showSingleCourse = wrapAsync(async (req, res) => {
+  let { id } = req.params
+  if (!id) {
+    throw new ApiError(404, "Course may deleted or Invalid ID")
+  }
+  const course = await Course.findById(id).populate({
+    path: "creator",
+    select: "username email role"
+  }).populate({
+    path: "courseContent",
+    populate: {
+      path: "modules",
+      select: "name",
+      populate: {
+        path: "lectures",
+        select: "name duration video"
+      }
+    }
+  })
+
+  if (!course) {
+    throw new ApiError(500, "Something went wrong while Showing the course")
+  }
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Course shown successfully",
+        course
+      )
+    )
+})
+
+export { createCourse, updateCourse, deleteCourse, showCourses, showSingleCourse };
