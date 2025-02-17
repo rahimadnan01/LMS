@@ -139,4 +139,43 @@ const deleteLecture = wrapAsync(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, deleteLecture, "Lecture deleted successfully"));
 });
-export { createLecture, updateLecture, deleteLecture };
+const getAllLectures = wrapAsync(async (req, res) => {
+  let { moduleId } = req.params
+  let moduleObjectId = new mongoose.Types.ObjectId(moduleId)
+  if (!moduleObjectId) {
+    throw new ApiError(404, "Module may not found")
+  }
+  const lectures = await Lecture.find({ module: moduleObjectId })
+
+  if (!lectures) {
+    throw new ApiError(404, "lectures not found")
+  }
+
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Lectures shown successfully",
+        lectures
+      )
+    )
+})
+const getSingleLecture = wrapAsync(async (req, res) => {
+  const { lectureId } = req.params
+  if (!lectureId) {
+    throw new ApiError(401, "Invalid ID")
+  }
+  let lecture = await Lecture.findById(lectureId)
+  if (!lecture) {
+    throw new ApiError(404, "Lecture not found")
+  }
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Lecture shown successfully",
+        lecture
+      )
+    )
+})
+export { createLecture, updateLecture, deleteLecture, getAllLectures, getSingleLecture };

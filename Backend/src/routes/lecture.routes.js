@@ -2,6 +2,8 @@ import Router from "express";
 import {
   createLecture,
   deleteLecture,
+  getAllLectures,
+  getSingleLecture,
   updateLecture,
 } from "../controllers/lecture.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
@@ -19,7 +21,7 @@ router
       },
     ]),
     createLecture,
-  );
+  ).get(getAllLectures);
 
 router
   .route(
@@ -34,5 +36,5 @@ router
     ]),
     updateLecture,
   )
-  .delete(deleteLecture);
+  .delete(deleteLecture).get(getSingleLecture);
 export default router;
