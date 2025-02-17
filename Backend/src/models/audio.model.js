@@ -20,8 +20,8 @@ const audioSchema = new mongoose.Schema(
     },
     playlist: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:"Playlist"
-    }
+      ref: "Playlist",
+    },
   },
   { timestamps: true },
 );

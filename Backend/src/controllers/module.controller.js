@@ -118,4 +118,57 @@ const deleteModule = wrapAsync(async (req, res) => {
     .json(new ApiResponse(200, deletedModule, "Module deleted successfully"));
 });
 
-export { createModule, updateModule, deleteModule };
+const showModules = wrapAsync(async (req, res) => {
+  const { courseContentId } = req.params;
+  let ObjectId = new mongoose.Types.ObjectId(courseContentId);
+  const allModules = await Module.aggregate([
+    {
+      $match: {
+        courseContent: ObjectId,
+      },
+    },
+    {
+      $lookup: {
+        from: "lectures",
+        localField: "_id",
+        foreignField: "module",
+        as: "lectures",
+      },
+    },
+  ]);
+
+  if (!allModules.length === 0) {
+    throw new ApiError(500, "Something went wrong while showing the modules");
+  }
+
+  res
+    .status(200)
+    .json(new ApiResponse(200, "modules shown successfully", allModules));
+});
+
+const getSingleModule = wrapAsync(async (req, res) => {
+  const { moduleId } = req.params;
+  let ObjectModuleId = new mongoose.Types.ObjectId(moduleId)
+  if (!moduleId || !ObjectModuleId) {
+    throw new ApiError(404, "Module may deleted or invalid Id")
+  }
+
+  const module = await Module.findById(moduleId).populate({
+    path: "lectures",
+    select: "name duration video"
+  })
+
+  if (!module) {
+    throw new ApiError(500, "Something went wrong while fetching the Modules")
+  }
+
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Module shown successfully",
+        module
+      )
+    )
+});
+export { createModule, updateModule, deleteModule, showModules, getSingleModule };

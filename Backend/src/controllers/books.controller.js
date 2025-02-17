@@ -10,9 +10,9 @@ const createPdf = wrapAsync(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  let existedBook = await Book.findOne({ name: name })
+  let existedBook = await Book.findOne({ name: name });
   if (existedBook) {
-    throw new ApiError(400, "Book already exists by this name")
+    throw new ApiError(400, "Book already exists by this name");
   }
   let pdfPath = req.files?.bookUrl?.[0].path;
   if (!pdfPath) {
@@ -73,24 +73,19 @@ const updatePdf = wrapAsync(async (req, res) => {
     .json(new ApiResponse(200, updatedBook, "Book updated Successfully"));
 });
 const deletePdf = wrapAsync(async (req, res) => {
-  const { bookId } = req.params
+  const { bookId } = req.params;
   if (!bookId) {
-    throw new ApiError(404, "Book Id is not valid or book may not found")
+    throw new ApiError(404, "Book Id is not valid or book may not found");
   }
 
-  const deletedBook = await Book.findByIdAndDelete(bookId, { new: true })
+  const deletedBook = await Book.findByIdAndDelete(bookId, { new: true });
 
   if (!deletedBook) {
-    throw new ApiError(500, "Something went wrong while deleting the book")
+    throw new ApiError(500, "Something went wrong while deleting the book");
   }
-  res.status(200)
-    .json(
-      new ApiResponse(
-        200,
-        deletedBook,
-        "Book deleted successfully"
-      )
-    )
+  res
+    .status(200)
+    .json(new ApiResponse(200, deletedBook, "Book deleted successfully"));
 });
 
 export { createPdf, updatePdf, deletePdf };

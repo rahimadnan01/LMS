@@ -143,6 +143,7 @@ const deleteUser = wrapAsync(async (req, res) => {
     .json(new ApiResponse(200, deletedUser, "User deleted successfully"));
 });
 
+// all users
 const showUsers = wrapAsync(async (req, res) => {
   const users = await User.find({});
   if (!users) {
@@ -153,4 +154,19 @@ const showUsers = wrapAsync(async (req, res) => {
     .json(new ApiResponse(200, users, "Users fetched successfully"));
 });
 
-export { createUser, deleteUser, updateUser, showUsers };
+// get single user
+const getUser = wrapAsync(async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    throw new ApiError(400, "User Id is not valid");
+  }
+
+  const user = await User.findById(id).select("-password");
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  res.status(200).json(new ApiResponse(200, "User fetched successfully", user));
+});
+
+export { createUser, deleteUser, updateUser, showUsers, getUser };
