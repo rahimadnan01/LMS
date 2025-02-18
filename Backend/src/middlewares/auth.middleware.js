@@ -20,7 +20,7 @@ export const verifyJwt = (role) => wrapAsync(async (req, res, next) => {
 
     let user = await User.findById(decodedToken._id).select("-password");
     if (role && user.role !== role) {
-      throw new ApiError(403, "Access Denied")
+      throw new ApiError(403, `Access Denied only ${role} can accessed to this path`)
     }
     if (!user) {
       throw new ApiError(500, "Something went wrong while decoding the token");
