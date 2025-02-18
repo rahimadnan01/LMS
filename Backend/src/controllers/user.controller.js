@@ -38,6 +38,12 @@ const createUser = wrapAsync(async (req, res) => {
       user: createdUser._id,
     });
   }
+  let teacher;
+  if (createdUser.role === "teacher") {
+    teacher = await Teacher.create({
+      user: createdUser._id,
+    });
+  }
   res
     .status(200)
     .json(

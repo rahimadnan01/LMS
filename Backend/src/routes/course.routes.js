@@ -23,7 +23,7 @@ router
         maxCount: 1,
       },
     ]),
-    verifyJwt,
+    verifyJwt(),
     createCourse,
   )
   .get(showCourses);

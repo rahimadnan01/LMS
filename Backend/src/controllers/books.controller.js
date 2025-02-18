@@ -87,5 +87,38 @@ const deletePdf = wrapAsync(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, deletedBook, "Book deleted successfully"));
 });
+const showAllBooks = wrapAsync(async (req, res) => {
+  const allBooks = await Book.find({})
+  if (!allBooks) {
+    throw new ApiError(404, "No books found")
+  }
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Books shown successfully",
+        allBooks
+      )
+    )
+})
+const showSingleBook = wrapAsync(async (req, res) => {
+  const { bookId } = req.params
+  if (!bookId) {
+    throw new ApiError(404, "Book not found or invalid ID")
+  }
+  const book = await Book.findById(bookId)
+  if (!book) {
+    throw new ApiError(500, "Something went wrong while getting the book")
+  }
 
-export { createPdf, updatePdf, deletePdf };
+  res.status(200)
+    .json(
+      new ApiResponse(
+        200,
+        "Book shown successfully",
+        book
+      )
+    )
+})
+
+export { createPdf, updatePdf, deletePdf, showAllBooks, showSingleBook };

@@ -3,6 +3,8 @@ import { upload } from "../middlewares/multer.middleware.js";
 import {
   createPdf,
   deletePdf,
+  showAllBooks,
+  showSingleBook,
   updatePdf,
 } from "../controllers/books.controller.js";
 const router = Router();
@@ -14,7 +16,7 @@ router.route("/books").post(
     },
   ]),
   createPdf,
-);
+).get(showAllBooks);
 router
   .route("/books/:bookId")
   .put(
@@ -26,5 +28,5 @@ router
     ]),
     updatePdf,
   )
-  .delete(deletePdf);
+  .delete(deletePdf).get(showSingleBook);
 export default router;
