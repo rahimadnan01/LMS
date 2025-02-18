@@ -30,6 +30,6 @@ export const verifyJwt = (role) => wrapAsync(async (req, res, next) => {
 
     next();
   } catch (error) {
-    throw new ApiError(500, error.message);
+    throw new ApiError(error.statusCode, error.message);
   }
 });
