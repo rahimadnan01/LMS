@@ -18,6 +18,7 @@ export { app };
 
 // import routes
 import studentAuthRoute from "./routes/authentication/studentAuth.routes.js"
+import teacherAuthRoute from "./routes/authentication/teacherAuth.routes.js"
 import adminAuthRoute from "./routes/authentication/adminAuth.routes.js"
 import userRoute from "./routes/user.routes.js";
 import courseRoute from "./routes/course.routes.js";
@@ -30,6 +31,7 @@ import playlistRoute from "./routes/playlist.routes.js";
 // declaring routes
 app.use("/api/v1", adminAuthRoute)
 app.use("/api/v1", studentAuthRoute)
+app.use("/api/v1", teacherAuthRoute)
 app.use("/api/v1", userRoute);
 app.use("/api/v1", courseRoute);
 app.use("/api/v1", courseContentRoute);
