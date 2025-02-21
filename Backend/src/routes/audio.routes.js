@@ -6,8 +6,10 @@ import {
   updateAudio,
 } from "../controllers/audio.controller.js";
 const router = Router();
+import { verifyJwt } from "../middlewares/auth.middleware.js";
 
 router.route("/playlist/:playlistId/audios").post(
+  verifyJwt("admin"),
   upload.fields([
     {
       name: "audioUrl",
@@ -20,6 +22,7 @@ router.route("/playlist/:playlistId/audios").post(
 router
   .route("/audios/:audioId")
   .put(
+    verifyJwt("admin"),
     upload.fields([
       {
         name: "audioUrl",
@@ -28,6 +31,6 @@ router
     ]),
     updateAudio,
   )
-  .delete(deleteAudio);
+  .delete(verifyJwt("admin"), deleteAudio);
 
 export default router;

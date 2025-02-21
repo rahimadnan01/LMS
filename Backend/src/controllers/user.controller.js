@@ -10,7 +10,7 @@ const createUser = wrapAsync(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  let existedUser = await User.findOne({ email, username });
+  let existedUser = await User.findOne({ email });
   if (existedUser) {
     throw new ApiError(400, "User already exists");
   }

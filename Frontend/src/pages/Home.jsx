@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CourseCard from "../components/ui/CourseCard.jsx";
 import Header from "../components/sections/Header.jsx";
 import SmallCard from "../components/ui/SmallCard.jsx";
 import Footer from "../components/layout/Footer.jsx";
 import Navbar from "../components/layout/Navbar.jsx";
-
+import axios from "axios";
 function Home() {
   return (
     <div className="w-full h-screen ">

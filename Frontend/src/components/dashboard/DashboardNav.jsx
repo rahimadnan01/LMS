@@ -1,9 +1,8 @@
 import React from "react";
 import ListItem from "../navigation/ListItem";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const DashboardNav = ({ name }) => {
-  const location = useLocation();
   const navLinks = [
     { name: "Dashboard", path: "adminDashboard" },
     { name: "Profile", path: "adminProfile" },

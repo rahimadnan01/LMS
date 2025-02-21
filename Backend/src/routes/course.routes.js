@@ -13,6 +13,7 @@ const router = Router();
 router
   .route("/courses")
   .post(
+    verifyJwt("admin"),
     upload.fields([
       {
         name: "thumbnail",
@@ -29,6 +30,7 @@ router
   .get(showCourses);
 
 router.route("/courses/:id").put(
+  verifyJwt("admin"),
   upload.fields([
     {
       name: "thumbnail",
@@ -42,5 +44,5 @@ router.route("/courses/:id").put(
   updateCourse,
 );
 
-router.route("/courses/:id").delete(deleteCourse).get(showSingleCourse);
+router.route("/courses/:id").delete(verifyJwt("admin"), deleteCourse).get(showSingleCourse);
 export default router;

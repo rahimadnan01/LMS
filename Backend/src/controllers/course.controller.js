@@ -120,7 +120,7 @@ const showCourses = wrapAsync(async (req, res) => {
     throw new ApiError(500, "Failed to fetch Courses");
   }
 
-  res.status(200).json(200, courses, "Courses fetched successfully");
+  res.status(200).json(new ApiResponse(200, "Courses fetched successfully", courses));
 });
 
 const showSingleCourse = wrapAsync(async (req, res) => {

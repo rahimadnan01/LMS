@@ -7,8 +7,11 @@ import {
   showSingleBook,
   updatePdf,
 } from "../controllers/books.controller.js";
+import { verifyJwt } from "../middlewares/auth.middleware.js";
+
 const router = Router();
 router.route("/books").post(
+  verifyJwt("admin"),
   upload.fields([
     {
       name: "bookUrl",
@@ -20,6 +23,7 @@ router.route("/books").post(
 router
   .route("/books/:bookId")
   .put(
+    verifyJwt("admin"),
     upload.fields([
       {
         name: "bookUrl",
@@ -28,5 +32,5 @@ router
     ]),
     updatePdf,
   )
-  .delete(deletePdf).get(showSingleBook);
+  .delete(verifyJwt("admin"), deletePdf).get(showSingleBook);
 export default router;

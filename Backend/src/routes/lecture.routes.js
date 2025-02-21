@@ -7,6 +7,8 @@ import {
   updateLecture,
 } from "../controllers/lecture.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJwt } from "../middlewares/auth.middleware.js"
+
 const router = Router();
 
 router
@@ -14,6 +16,7 @@ router
     "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture",
   )
   .post(
+    verifyJwt("admin"),
     upload.fields([
       {
         name: "video",
@@ -28,6 +31,7 @@ router
     "/courses/:courseId/courseContent/:courseContentId/module/:moduleId/lecture/:lectureId",
   )
   .put(
+    verifyJwt("admin"),
     upload.fields([
       {
         name: "video",
@@ -36,5 +40,5 @@ router
     ]),
     updateLecture,
   )
-  .delete(deleteLecture).get(getSingleLecture);
+  .delete(verifyJwt("admin"), deleteLecture).get(getSingleLecture);
 export default router;
