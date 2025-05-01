@@ -4,6 +4,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { wrapAsync } from "../utils/wrapAsync.js";
 import { generateAccessAndRefreshToken } from "../utils/tokens.js"
+import mongoose from "mongoose";
 // generate access and refresh token
 
 
@@ -69,7 +70,7 @@ const loginStudent = wrapAsync(async (req, res) => {
     throw new ApiError(400, "User not found email not found");
   }
 
-  if (user.role !== "student") {
+  if(user.role !== "student") {
     throw new ApiError(403, "Access Denied only student can login on this page")
   }
 
@@ -140,6 +141,7 @@ const logoutStudent = wrapAsync(async (req, res) => {
     .clearCookie("accessToken", options)
     .json(new ApiResponse(200, {}, "User log out successfully"));
 });
+
 
 
 
